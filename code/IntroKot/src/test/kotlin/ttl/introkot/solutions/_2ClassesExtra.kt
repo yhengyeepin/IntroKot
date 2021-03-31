@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test
 // we need to provide our own copy method.  Strike 2
 // If we do provide a copy method, we can't use the
 // data keyword.  Strike 3
-class TestProductExtra(val name: String, val price: Double,
+class TestProductExtraSolution(val name: String, val price: Double,
                        val quantity: Int, val condition: String, val comments: String = "") {
 
     //Note - we use nullness as a way to give optionality in this case.
@@ -34,20 +34,20 @@ class TestProductExtra(val name: String, val price: Double,
     // our requirement for a copy that if you don't send us comments, you
     // get an empty string.
     fun copy(name: String? = null, condition: String? = null, price: Double? = null,
-             quantity: Int? = null, comments: String = "") : TestProductExtra{
+             quantity: Int? = null, comments: String = "") : TestProductExtraSolution{
         val n = name ?: this.name
         val c = condition ?: this.condition
         val p = price ?: this.price
         val q = quantity ?: this.quantity
 
-        return TestProductExtra(n, p, q, c, comments)
+        return TestProductExtraSolution(n, p, q, c, comments)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as TestProductExtra
+        other as TestProductExtraSolution
 
         if (name != other.name) return false
         if (condition != other.condition) return false
@@ -82,10 +82,10 @@ class ClassesExtraTests {
     //TODO - Comment out the tests and make them run.
     @Test
     fun testTask1() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good")
 
-        val product2 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product2 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good")
 
         val b1 = product1 == product2
@@ -94,10 +94,10 @@ class ClassesExtraTests {
 
     @Test
     fun testTask2() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Really really good")
 
-        val product2 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product2 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Good deal")
 
         val b1 = product1 == product2
@@ -106,7 +106,7 @@ class ClassesExtraTests {
 
     @Test
     fun testTask3() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Beautiful widgets")
 
         val product2 = product1.copy()
@@ -117,7 +117,7 @@ class ClassesExtraTests {
 
     @Test
     fun testTask4() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Beautiful widgets")
 
         val product2 = product1.copy(quantity = 20)
@@ -128,19 +128,21 @@ class ClassesExtraTests {
 
     @Test
     fun testTask5() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Beautiful widgets")
 
         val product2 = product1.copy(quantity = 50)
 
         //TODO - This one is slightly tricky
         assertEquals("", product2.comments)
+
+        assertEquals(50, product2.quantity)
     }
 
     //TODO - Extra Extra credit
     @Test
     fun testTask6() {
-        val product1 = TestProductExtra(name = "Shiny Widget", price = 22.50,
+        val product1 = TestProductExtraSolution(name = "Shiny Widget", price = 22.50,
                 quantity = 10, condition = "good", comments = "Beautiful widgets")
 
         //Destructuring

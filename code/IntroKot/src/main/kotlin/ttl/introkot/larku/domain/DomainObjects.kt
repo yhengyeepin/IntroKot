@@ -13,7 +13,7 @@ val emailRegEx = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}\$".toRegex()
 data class Email(val email: String) : Serializable{
     init {
        if(!emailRegEx.matches(email)) {
-           throw RuntimeException("Bad email: " + email)
+           throw RuntimeException("Bad email: $email")
        }
     }
 }

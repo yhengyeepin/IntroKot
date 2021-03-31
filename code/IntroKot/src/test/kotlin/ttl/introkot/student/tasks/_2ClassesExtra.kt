@@ -2,7 +2,6 @@ package ttl.introkot.student.tasks
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import ttl.introkot.solutions.TestProductExtra
 import java.time.LocalTime
 import kotlin.reflect.full.memberProperties
 
