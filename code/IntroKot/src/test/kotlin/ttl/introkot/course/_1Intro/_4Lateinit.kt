@@ -33,6 +33,7 @@ fun lateInitVar() {
 class LateInitTest {
     @Test
     fun main() {
+//        lateInitVar()
         lateInitVarBoom()
     }
 }
